@@ -1,0 +1,176 @@
+html{
+        height:100%;
+        overflow:hidden;
+    }
+    body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(orange, white, green);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .swipe-image {
+      position: absolute;
+      width: 90%;
+      height: auto;
+      max-width:100%;
+      object-fit:contain;
+      clip-path: inset(100% 100% 0 0); /* Hidden at first */
+      opacity: 1;
+      z-index: 1;
+    }
+  .shadow {
+   filter: drop-shadow(1px 1px 0 black);
+   z-index:0;
+   }
+    .swipe-image.reveal {
+      animation: revealSwipe 1s forwards ease-out;
+    }
+    
+
+    @keyframes revealSwipe {
+      to {
+        clip-path: inset(0 0 0 0); /* Fully visible */
+      }
+    }
+
+    #plane {
+      position: absolute;
+      width: 15vw;
+      height: 15vh;
+      background: url('2.png') no-repeat center/contain;
+      bottom: -6vw;
+      left: -10vw;
+      animation: fly 2.8s ease-out forwards;
+      z-index: 2;
+      filter: drop-shadow(1px 1px 0 black)
+    }
+
+    @keyframes fly {
+      to {
+        transform: translate(100vw, -100vh) rotate(-4deg);
+        opacity: .5;
+      }
+    }
+    .chakra-wrapper {
+        position:absolute;
+        animation: 1s ease-out forwards;
+    }
+    #cw1{
+        bottom:0;
+        left:0;
+        transform:translate(-30vw, 20vh);
+        width:25vw;
+        
+        animation-name:enterc1;
+        animation-delay:2s;
+    }
+    #cw2{
+        
+        bottom:0;
+        left:0;
+        transform:translate(-30vw, 20vh);
+        width:18vw;
+        
+        animation-name:enterc2;
+        animation-delay:2.1s;
+    }
+      #cw3{
+        right:0;
+        top:0;
+transform:translate(30vw, -20vh);
+        width:25vw;
+        
+        animation-name:enterc3;
+        animation-delay:2s;
+    }
+    #cw4{
+        right:0;
+        top:0;
+        transform:translate(30vw, -20vh);
+        width:18vw;
+        
+        animation-name:enterc4;
+        animation-delay:2.1s;
+    }
+    .chakra {
+        width:100%;
+        height:auto;
+        animation:spin 20s linear infinite;
+        transform-origin:center;
+    }
+       @keyframes enterc1 {
+       0% {
+           transform:translate(-30vw, 20vh);
+       }
+      100% {
+            transform:translate(2vw,-1vh);
+        }
+    }
+         @keyframes enterc2 {
+         0% {
+           transform:translate(-30vw, 20vh);
+       }
+        100% {
+            transform:translate(18vw,-14vh);
+        }
+    }
+         @keyframes enterc3 {
+       0% {
+           transform:translate(30vw, -20vh);
+       }
+        100% {
+            transform:translate(-2vw,1vh);
+        }
+    }
+         @keyframes enterc4 {
+         0% {
+           transform:translate(30vw, -20vh);
+       }
+        100% {
+            transform:translate(-18vw,14vh);
+        }
+    }
+    @keyframes spin {
+        0% {
+           transform: rotate(0deg);
+        }
+        100% {
+           transform: rotate(360deg);
+        }
+    }
+    p{
+        position: absolute;
+        bottom:15vh;
+        right:0vw;
+        transform: translateX(55vw);
+        animation: slide1 1.5s 3s linear forwards;
+    }
+    @keyframes slide1 {
+    0% {
+        transform: translateX(55vw);
+    }
+        100% {
+            transform: translateX(-7vw);
+        }
+    }
+    #p1{
+          color: black;
+      font-size: 20px;
+      font-family: monospace;
+      align-content: center;
+      text-align: center;
+      align-items: center;
+      font-weight: bold;
+    }
+#s1 {
+  background: linear-gradient(to right, orange, white, green);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 900;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2); /* Stronger shadow */
+}
