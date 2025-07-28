@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    html{
+        height:100%;
+        overflow:hidden;
+    }
+    body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(orange, white, green);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+@font-face {
+  font-family: 'CMU Typewriter Upright Italic';
+  src: url('cmu.serif-upright-italic-uprightitalic.ttf')
+   format('truetype');
+}
+    .swipe-image {
+      position: absolute;
+      width: 90%;
+      height: auto;
+      max-width:100%;
+      object-fit:contain;
+      clip-path: inset(100% 100% 0 0); /* Hidden at first */
+      opacity: 1;
+      z-index: 1;
+    }
+  .shadow {
+   filter: drop-shadow(1px 1px 0 black);
+   z-index:0;
+   }
+    .swipe-image.reveal {
+      animation: revealSwipe 1s forwards ease-out;
+    }
+    
+
+    @keyframes revealSwipe {
+      to {
+        clip-path: inset(0 0 0 0); /* Fully visible */
+      }
+    }
+
+    #plane {
+      position: absolute;
+      width: 15vw;
+      height: 15vh;
+      background: url('2.webp') no-repeat center/contain;
+      bottom: 0vw;
+      left: 0vw;
+      transform:translate(-14vw, 10vh);
+      z-index: 2;
+      filter: drop-shadow(1px 1px 0 black)
+    }
+
+    @keyframes fly {
+      to {
+        transform: translate(100vw, -100vh) rotate(-4deg);
+        opacity: .5;
+      }
+    }
+    .chakra-wrapper {
+        position:absolute;
+        animation: 1s ease-out forwards;
+    }
+    #cw1{
+        bottom:0;
+        left:0;
+        transform:translate(-30vw, 20vh);
+        width:25vw;
+        
+        
+    }
+    #cw2{
+        
+        bottom:0;
+        left:0;
+        transform:translate(-30vw, 20vh);
+        width:18vw;
+        
+        
+    }
+      #cw3{
+        right:0;
+        top:0;
+transform:translate(30vw, -20vh);
+        width:25vw;
+        
+        
+    }
+    #cw4{
+        right:0;
+        top:0;
+        transform:translate(30vw, -20vh);
+        width:18vw;
+        
+        
+    }
+    .chakra {
+        width:100%;
+        height:auto;
+        animation:spin 20s linear infinite;
+        transform-origin:center;
+    }
+       @keyframes enterc1 {
+       0% {
+           transform:translate(-30vw, 20vh);
+       }
+      100% {
+            transform:translate(2vw,-1vh);
+        }
+    }
+         @keyframes enterc2 {
+         0% {
+           transform:translate(-30vw, 20vh);
+       }
+        100% {
+            transform:translate(18vw,-14vh);
+        }
+    }
+         @keyframes enterc3 {
+       0% {
+           transform:translate(30vw, -20vh);
+       }
+        100% {
+            transform:translate(-2vw,1vh);
+        }
+    }
+         @keyframes enterc4 {
+         0% {
+           transform:translate(30vw, -20vh);
+       }
+        100% {
+            transform:translate(-18vw,14vh);
+        }
+    }
+    @keyframes spin {
+        0% {
+           transform: rotate(0deg);
+        }
+        100% {
+           transform: rotate(360deg);
+        }
+    }
+    @keyframes fade1 {
+        0% {
+            opacity:1;
+        }
+        100%{
+            opacity:0;
+        }
+    }
+      @keyframes fade {
+        0% {
+            opacity:0;
+        }
+        100%{
+            opacity:1;
+        }
+    }
+    #t1{
+        position: absolute;
+        bottom:15vh;
+        right:0vw;
+        transform: translateX(55vw);
+        animation: none;
+    }
+    @keyframes slide1 {
+    0% {
+        transform: translateX(55vw);
+    }
+        100% {
+            transform: translateX(-7vw);
+        }
+    }
+    #p1{
+          color: black;
+      font-size: 1rem;
+      font-family: monospace;
+      align-content: center;
+      text-align: center;
+      align-items: center;
+      font-weight: bold;
+      
+    }
+    #typewriter {
+    font-family: CMU Typewriter Upright Italic, monospace;
+  font-size: 1rem;
+  color: black;
+  overflow: hidden;
+  width: fit-content;
+  position: absolute;
+  top: 10vh;
+  text-align: center;
+  justify-content: center;
+  font-weight: bold;
+  font-style: italic;
+  margin: 5vw;
+  padding 5vw;
+}
+#s1 {
+  background: linear-gradient(to right, orange, white, green);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 900;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2); /* Stronger shadow */
+}
+#btn1{
+     font-family: arial, sans-serif;
+    color: black;
+    font-size : .7rem;
+    Font-style: italic;
+    font-weight: bold;
+    text-align: center;
+    background-color: rgba(255,255,255,0.2);
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.7);
+    border-radius: 5px;
+    border-color: white;
+    padding:3px 5px;
+    Position:relative;
+    top:0vw;
+    
+    width:10vw;
+    height:3vh;
+    opacity:0;
+    animation:none;
+    
+</style>
+</head>
+<body>
+  <!-- Flying plane -->
+ <p id="typewriter"></p><br>
+  <button id="btn1" onclick="startplane()" ontouchstart="tou()" onmouseover="tou()" ontouchend="touend()" onmouseout="touend()">click</button>
+  <div id="plane"></div>
+
+  <!-- Image to be revealed -->
+  <img src="1.webp" class="swipe-image shadow" id="image">
+ <div class="chakra-wrapper" id="cw1">
+     <img src="chakra.webp" class="chakra" id="c1">
+     </div>
+<div class="chakra-wrapper" id="cw2">
+    <img src="chakra.webp" class="chakra" id="c2">
+    </div>
+<div class="chakra-wrapper" id="cw3">
+    <img src="chakra.webp" class="chakra" id="c3">
+    </div>
+<div class="chakra-wrapper" id="cw4">
+    <img src="chakra.webp" class="chakra" id="c4">
+    </div>
+    <div id="t1">
+        <p id="p1">Happy<br>
+        <span id="s1">Independence Day</span></p>
+    </div>
+</body>
+  <script>
+ const text = "This text will be typed one character at a time, no matter how long!";
+  const speed = 50; // milliseconds per character
+  let i = 0;
+
+  function type() {
+    if (i < text.length) {
+      typewriter.innerHTML = typewriter.innerHTML + text.charAt(i);
+      i++;
+      setTimeout(type, speed);
+ } else {
+    // Show the button after typing is complete
+    document.getElementById("btn1").style.animation = "fade 1s linear forwards";
+  }
+  }
+
+  type(); // start typing
+  
+   function startplane(){
+   
+  const plane = document.getElementById('plane');
+  plane.style.animation = "fly 2.8s ease-out forwards";
+  document.getElementById('btn1').style.animation="fade1 .1s linear forwards";
+  document.getElementById("typewriter").style.animation="fade1 .1s linear forwards";
+
+  // Start image reveal after delay
+  setTimeout(() => {
+    document.getElementById('image').classList.add('reveal');
+  }, 500);
+
+  // Trigger chakras by adding a class or inline animation
+  document.getElementById('cw1').style.animation = "enterc1 1s 2s ease-out forwards";
+  document.getElementById('cw2').style.animation = "enterc2 1s 2.1s ease-out forwards";
+  document.getElementById('cw3').style.animation = "enterc3 1s 2s ease-out forwards";
+  document.getElementById('cw4').style.animation = "enterc4 1s 2.1s ease-out forwards";
+
+  // Start "Happy Independence Day" text slide
+  document.getElementById('t1').style.animation = "slide1 1.5s 3s linear forwards";
+}
+
+function tou(){
+       btn1.style.background = "linear-gradient(green, #ffffffff, orange)";
+}
+function touend(){
+    btn1.style.background = "rgba(255,255,255,0.2)";
+}
+  </script>
+</html>
