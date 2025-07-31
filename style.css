@@ -1,8 +1,4 @@
-    html{
-        height:100%;
-        overflow:hidden;
-    }
-    body {
+html, body {
       margin: 0;
       width: 100%;
       height: 100%;
@@ -35,27 +31,24 @@
     .swipe-image.reveal {
       animation: revealSwipe 1s forwards ease-out;
     }
-    
-
     @keyframes revealSwipe {
       to {
         clip-path: inset(0 0 0 0); /* Fully visible */
       }
     }
-
-    #plane {
+#plane {
       position: absolute;
       width: 15vw;
       height: 15vh;
       background: url('2.webp') no-repeat center/contain;
-      bottom: 0vw;
+  filter: drop-shadow(10px 0 5px rgba(255, 255, 255, 0.8));
+     bottom: 0vw;
       left: 0vw;
       transform:translate(-14vw, 10vh);
       z-index: 2;
       filter: drop-shadow(1px 1px 0 black)
     }
-
-    @keyframes fly {
+@keyframes fly {
       to {
         transform: translate(100vw, -100vh) rotate(-4deg);
         opacity: .5;
@@ -70,34 +63,25 @@
         left:0;
         transform:translate(-30vw, 20vh);
         width:25vw;
-        
-        
-    }
+        }
     #cw2{
-        
         bottom:0;
         left:0;
         transform:translate(-30vw, 20vh);
         width:18vw;
-        
-        
-    }
+        }
       #cw3{
         right:0;
         top:0;
 transform:translate(30vw, -20vh);
         width:25vw;
-        
-        
-    }
+        }
     #cw4{
         right:0;
         top:0;
         transform:translate(30vw, -20vh);
         width:18vw;
-        
-        
-    }
+        }
     .chakra {
         width:100%;
         height:auto;
@@ -163,13 +147,15 @@ transform:translate(30vw, -20vh);
     #t1{
         position: absolute;
         bottom:15vh;
+        font-size: 1rem;
         right:0vw;
         transform: translateX(55vw);
-        animation: none;
+        
     }
     @keyframes slide1 {
     0% {
         transform: translateX(55vw);
+        
     }
         100% {
             transform: translateX(-7vw);
@@ -177,7 +163,6 @@ transform:translate(30vw, -20vh);
     }
     #p1{
           color: black;
-      font-size: 1rem;
       font-family: monospace;
       align-content: center;
       text-align: center;
@@ -198,7 +183,8 @@ transform:translate(30vw, -20vh);
   font-weight: bold;
   font-style: italic;
   margin: 5vw;
-  padding 5vw;
+  margin-bottom:5vh;
+  padding:5vw;
 }
 #s1 {
   background: linear-gradient(to right, orange, white, green);
@@ -220,9 +206,37 @@ transform:translate(30vw, -20vh);
     border-color: white;
     padding:3px 5px;
     Position:relative;
-    top:0vw;
-    width:10vw;
+    top:3vh;
+    margin-top: 3vh;
+    width:13vw;
     height:3vh;
     opacity:0;
     animation:none;
+    }
     
+    @media(min-width:1024px){
+        #typewriter{
+            font-size:2rem;
+        }
+        #btn1{
+            font-size:1.4rem;
+            width:18vw;
+            height: 12vh;
+        }
+        #t1 {
+            font-size:2.5rem;
+        }
+    }
+    @media(min-width:756px){
+        #typewriter{
+            font-size:2rem;
+        }
+        #btn1{
+            font-size:1.4rem;
+            width:15vw;
+            height: 6vh;
+        }
+        #t1{
+            font-size:2.5rem;
+        }
+    }
