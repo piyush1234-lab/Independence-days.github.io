@@ -1,24 +1,43 @@
-const text = "This text will be typed one character at a time, no matter how long!";
-  const speed = 50; // milliseconds per character
-  let i = 0;
+const typewriter = document.getElementById("typewriter");
+const text = typewriter.innerHTML;  // Save the full original text (with <br>)
+typewriter.innerHTML = "";          // Clear it to start typing
 
-  function type() {
-    if (i < text.length) {
-      typewriter.innerHTML = typewriter.innerHTML + text.charAt(i);
-      i++;
-      setTimeout(type, speed);
- } else {
-    // Show the button after typing is complete
+const speed = 50; // typing speed (ms per character)
+let i = 0;        // current character position
+let isTag = false; // are we inside an HTML tag?
+let currentText = ''; // text typed so far
+
+function type() {
+  if (i < text.length) {
+    let char = text.charAt(i);  // get current character
+
+    if (char === '<') isTag = true;    // starting a tag like <br>
+    if (char === '>') isTag = false;   // ending the tag
+
+    currentText += char; // add this character to output
+
+    typewriter.innerHTML = currentText; // update what's shown on screen
+
+    i++; // move to next character let delay;
+if (isTag) {
+  delay = 0;
+} else {
+  delay = speed;
+}
+setTimeout(type, delay);
+    // Delay only if NOT inside a tag
+    } else {
+    // After all typing is done, show the button
     document.getElementById("btn1").style.animation = "fade 1s linear forwards";
   }
-  }
+}
 
-  type(); // start typing
+type(); // Start typing effect
   
    function startplane(){
    
   const plane = document.getElementById('plane');
-  plane.style.animation = "fly 2.8s ease-out forwards";
+  plane.style.animation = "fly 2.6s ease-out forwards";
   document.getElementById('btn1').style.animation="fade1 .1s linear forwards";
   document.getElementById("typewriter").style.animation="fade1 .1s linear forwards";
 
@@ -42,4 +61,25 @@ function tou(){
 }
 function touend(){
     btn1.style.background = "rgba(255,255,255,0.2)";
+}
+function playA1(){
+    const a1 = document.getElementById("a1");
+    a1.play();
+    a1.volume=1;
+}
+function playA2() {
+  const a1 = document.getElementById('a1');
+  const a2 = document.getElementById('a2');
+
+  a2.play(); // Start playing second audio
+
+  let fade = setInterval(() => {
+    a1.volume = Math.max(0, a1.volume - 0.1); // Gradually lower volume
+
+    if (a1.volume <= 0) { // Stop when volume reaches 0
+      a1.volume = 0;
+      a1.pause();
+      clearInterval(fade); // Stop fading
+    }
+  }, 30); // Repeat every 50ms
 }
