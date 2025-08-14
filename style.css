@@ -36,23 +36,61 @@ html, body {
         clip-path: inset(0 0 0 0); /* Fully visible */
       }
     }
-#plane {
+    .swipe-image1 {
       position: absolute;
-      width: 15vw;
-      height: 15vh;
+      width: 30%;
+      height: 50%;
+      left: 25vw;
+      max-width:100%;
+      object-fit:contain;
+      clip-path: inset(0% 100% 0 0); /* Hidden at first */
+      opacity: .8;
+      z-index: 10;
+    }
+  .shadow1 {
+   filter: drop-shadow(1px 1px 0 black);
+   z-index:10;
+   }
+    .swipe-image1.reveal1 {
+      animation: revealSwipe1 1s forwards ease-out;
+    }
+    @keyframes revealSwipe1 {
+      to {
+        clip-path: inset(0 0 0 0); /* Fully visible */
+      }
+    }
+    .plane{
+        position: absolute;
+      z-index: 5;
+      filter: drop-shadow(1px 1px 0 black);
+    }
+#pl1 {
       background: url('2.webp') no-repeat center/contain;
-  filter: drop-shadow(10px 0 5px rgba(255, 255, 255, 0.8));
+  
+  width: 15vw;
+      height: 15vh;
      bottom: 0vw;
       left: 0vw;
       transform:translate(-14vw, 10vh);
-      z-index: 2;
-      filter: drop-shadow(1px 1px 0 black)
+    }
+    #pl2{
+      background: url('3.webp') no-repeat center/contain;
+      width: 18vw;
+      height: 18vh;
+     bottom: 45vh;
+      left: -20vw;
+      transform:translateX(0);
     }
 @keyframes fly {
       to {
         transform: translate(100vw, -100vh) rotate(-4deg);
         opacity: .5;
       }
+    }
+    @keyframes fly1 {
+    to {
+    transform: translateX(120vw);    
+    }     
     }
     .chakra-wrapper {
         position:absolute;
@@ -213,7 +251,6 @@ transform:translate(30vw, -20vh);
     opacity:0;
     animation:none;
     }
-    
     @media(min-width:1024px){
         #typewriter{
             font-size:2rem;
