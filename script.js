@@ -98,7 +98,7 @@ function playA2() {
 
     // Fade out a1
     let fadeA1 = setInterval(() => {
-        a1.volume = Math.max(0, a1.volume - 0.05);
+        a1.volume = Math.max(0, a1.volume - 0.5);
         if (a1.volume <= 0) {
             a1.pause();
             clearInterval(fadeA1);
