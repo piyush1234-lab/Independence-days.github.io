@@ -77,7 +77,7 @@ html, body {
       background: url('3.webp') no-repeat center/contain;
       width: 18vw;
       height: 18vh;
-     bottom: 45vh;
+     bottom: 40vh;
       left: -20vw;
       transform:translateX(0);
     }
